@@ -23,52 +23,44 @@
         </div>
         <div class="register-right animate__animated animate__fadeInLeft">
             <div class="register-right-logo"></div>
-            <div class="register-right-register-form">
-                <div class="register-right-register-form-item">
+            <div class="register-right-login-form">
+                <div class="register-right-login-form-item">
                     <el-icon color="#99b9f2" size="20px">
                         <UserFilled />
                     </el-icon>
-                    <el-input v-model="registerForm.username" placeholder="请输入用户名" />
+                    <el-input v-model="loginForm.username" placeholder="请输入用户名" />
                 </div>
-                <div class="register-right-register-form-item">
-                    <el-icon color="#99b9f2" size="20px">
-                        <Briefcase />
-                    </el-icon>
-                    <el-input v-model="registerForm.username" placeholder="请输入邮箱" />
-                </div>
-                <div class="register-right-register-form-item">
-                    <el-icon color="#99b9f2" size="20px">
-                        <Iphone />
-                    </el-icon>
-                    <el-input v-model="registerForm.username" placeholder="请输入手机号" />
-                </div>
-                <div class="register-right-register-form-item">
+                <div class="register-right-login-form-item">
                     <el-icon color="#99b9f2" size="20px">
                         <Lock />
                     </el-icon>
-                    <el-input v-model="registerForm.password" show-password placeholder="请输入密码" />
+                    <el-input v-model="loginForm.password" show-password placeholder="请输入密码" />
                 </div>
-                <div class="register-right-register-form-item">
+                <div class="register-right-login-form-item">
                     <div class="register-right-footer">
-                        <span>已有账号?去登录</span>
+                        <el-checkbox v-model="isRemember" label="记住密码" size="small" />
+                        <div class="register-right-footer-right">
+                            <span>去注册</span>/
+                            <span>忘记密码?</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <el-button type="primary" class="register-btn">注册</el-button>
+            <el-button type="primary" class="login-btn">登录</el-button>
         </div>
     </div>
 </template>
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
-import { UserFilled, Lock, Iphone, Briefcase } from '@element-plus/icons-vue';
+import { UserFilled, Lock } from '@element-plus/icons-vue';
 
-type RegisterForm = {
+type LoginForm = {
     username: string,
     password: string
 }
 
-const registerForm = reactive<RegisterForm>({
+const loginForm = reactive<LoginForm>({
     username: '',
     password: ''
 })
@@ -145,27 +137,30 @@ const isRemember = ref<boolean>(false)
             background: no-repeat url("@/assets/images/logo.png");
         }
 
-        &-register-form {
+        &-login-form {
             width: 100%;
 
             &-item {
                 display: flex;
                 align-items: center;
-                margin-bottom: .2rem;
+                margin-bottom: .3rem;
 
                 .register-right-footer {
                     font-size: .12rem;
                     display: flex;
                     align-items: center;
-                    justify-content: flex-end;
+                    justify-content: space-between;
                     width: 100%;
                     color: #668fe8;
-                    cursor: pointer;
+
+                    &-right {
+                        cursor: pointer;
+                    }
                 }
             }
         }
 
-        .register-btn {
+        .login-btn {
             width: 100%;
             height: .4rem;
             font-size: .2rem;
