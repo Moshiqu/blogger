@@ -40,7 +40,7 @@
                     <div class="register-right-footer">
                         <el-checkbox v-model="isRemember" label="记住密码" size="small" />
                         <div class="register-right-footer-right">
-                            <span>去注册</span>/
+                            <span @click="toRegister">去注册</span>/
                             <span>忘记密码?</span>
                         </div>
                     </div>
@@ -54,6 +54,7 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
 import { UserFilled, Lock } from '@element-plus/icons-vue';
+import router from '../../router';
 
 type LoginForm = {
     username: string,
@@ -66,6 +67,12 @@ const loginForm = reactive<LoginForm>({
 })
 
 const isRemember = ref<boolean>(false)
+
+const toRegister = () => {
+    router.push({
+        name: 'Register'
+    })
+}
 </script>
 
 <style lang="less" scoped>

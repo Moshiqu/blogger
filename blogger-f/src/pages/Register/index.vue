@@ -50,7 +50,7 @@
                 </div>
                 <div class="register-right-register-form-item">
                     <div class="register-right-footer">
-                        <span>已有账号?去登录</span>
+                        <span @click="toLogin">已有账号?去登录</span>
                     </div>
                 </div>
             </div>
@@ -62,6 +62,7 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue';
 import { UserFilled, Lock, Iphone, Briefcase } from '@element-plus/icons-vue';
+import router from '../../router';
 
 type RegisterForm = {
     username: string,
@@ -73,7 +74,11 @@ const registerForm = reactive<RegisterForm>({
     password: ''
 })
 
-const isRemember = ref<boolean>(false)
+const toLogin= ()=>{
+    router.push({
+        name:'Login'
+    })
+}
 </script>
 
 <style lang="less" scoped>
