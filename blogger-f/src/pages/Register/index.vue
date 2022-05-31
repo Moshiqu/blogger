@@ -34,13 +34,7 @@
                     <el-icon color="#99b9f2" size="20px">
                         <Briefcase />
                     </el-icon>
-                    <el-input v-model="registerForm.username" placeholder="请输入邮箱" />
-                </div>
-                <div class="register-right-register-form-item">
-                    <el-icon color="#99b9f2" size="20px">
-                        <Iphone />
-                    </el-icon>
-                    <el-input v-model="registerForm.username" placeholder="请输入手机号" />
+                    <el-input v-model="registerForm.email" placeholder="请输入邮箱" />
                 </div>
                 <div class="register-right-register-form-item">
                     <el-icon color="#99b9f2" size="20px">
@@ -54,7 +48,7 @@
                     </div>
                 </div>
             </div>
-            <el-button type="primary" class="register-btn">注册</el-button>
+            <el-button type="primary" class="register-btn" @click="registerHandler">注册</el-button>
         </div>
     </div>
 </template>
@@ -66,18 +60,24 @@ import router from '../../router';
 
 type RegisterForm = {
     username: string,
-    password: string
+    password: string,
+    email: string
 }
 
 const registerForm = reactive<RegisterForm>({
     username: '',
-    password: ''
+    password: '',
+    email: ''
 })
 
-const toLogin= ()=>{
+const toLogin = () => {
     router.push({
-        name:'Login'
+        name: 'Login'
     })
+}
+
+const registerHandler = () => {
+
 }
 </script>
 
